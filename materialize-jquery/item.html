@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- end styles -->
+</head>
+
+<body>
+    <!-- start header -->
+    <header>
+        <nav>
+            <div class="nav-wrapper indigo">
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="item.html">Cadastro de items</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- end header -->
+
+    <div class="container">
+        <!-- start content -->
+        <div>
+            <h5 class="center-align">Cadastro de items
+                <button type="button" class="waves-effect waves-light lime darken-2 pulse btn" id="item-atualizar"><i
+                        class="material-icons">autorenew</i></button>
+            </h5>
+        </div>
+        <div class="row">
+            <button type="button" id="item-novo" class="waves-effect waves-light indigo darken-1 pulse btn adicionar"><i
+                    class="material-icons">add</i></a>
+        </div>
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th class="center-align">Descrição</th>
+                    <th class="center-align">Barras</th>
+                    <th class="center-align">Preço</th>
+                    <th class="center-align">Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <tr>
+                    <td class="center-align">1</td>
+                    <td class="center-align">Descrição item</td>
+                    <td class="center-align">178912354892</td>
+                    <td class="center-align">999,99</td>
+                    <td class="center-align">
+                        <button type="button" class="waves-effect waves-light teal darken-3 btn" id="alterar"><i class="material-icons">create</i></button>
+                        <button type="button" class="waves-effect waves-light red darken-4 btn" id="excluir"><i class="material-icons">delete</i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- end start content -->
+    </div>
+
+    <!-- start modal adicionar -->
+    <div id="item-modal-adicionar" class="modal fade">
+        <div class="modal-content">
+            <h4>Adicionar</h4>
+            <form id="item-add" class="col s12">
+                <div class="row">
+                    <section class="input-field col s8">
+                        <input type="text" name="descricao" id="descricao" class="validate" required />
+                        <label for="descricao">Descrição*</label>
+                    </section>
+                    <section class="input col s4">
+                        <label for="tipo">Tipo</label>
+                        <select name="tipo_id" id="tipo_id_add">
+                            <option value="">Selecione um tipo</option>
+                            <option value="1">Não perecível</option>
+                            <option value="2">Perecível</option>
+                            <option value="3">Refrigerado</option>
+                            <option value="4">Congelado</option>
+                        </select>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="input-field col s2">
+                        <input type="text" name="preco" id="preco" class="validate" required />
+                        <label for="preco">Preço*</label>
+                    </section>
+                    <section class="input-field col s4">
+                        <input type="text" name="descricao_reduzida" id="descricao_reduzida" required>
+                        <label for="descricao_reduzida">Descrição reduzida</label>
+                    </section>
+                    <section class="input-field col s2">
+                        <input type="text" name="barra" id="barra" />
+                        <label for="barra">barras</label>
+                    </section>
+                    <section class="input-field col s4">
+                        <input type="text" name="observacao" id="observacao">
+                        <label for="observacao">Observação</label>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                    <button type="submit" class="waves-effect waves-light indigo darken-1 btn btn-small right">Adicionar
+                        <i class="material-icons right">add</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- end modal adicionar -->
+
+    <!-- start modal alterar -->
+    <div id="item-modal-alterar" class="modal fade">
+        <div class="modal-content">
+            <h4>Alterar</h4>
+            <form id="item-alt" class="col s12">
+                <input type="hidden" class="item_id" name="item_id" />
+                <div class="row">
+                    <section class="input col s8">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" name="descricao" class="validate descricao" value="Descrição item" required />
+                    </section>
+                    <section class="input col s4">
+                        <label for="tipo">Tipo</label>
+                        <select name="tipo_id" id="tipo_id_alt">
+                            <option value="1">Não perecível</option>
+                            <option value="2">Perecível</option>
+                            <option value="3">Refrigerado</option>
+                            <option value="4" selected>Congelado</option>
+                        </select>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="input col s2">
+                        <label for="preco">Preço</label>
+                        <input type="text" name="preco" class="preco" value="999,99" required />
+                    </section>
+                    <section class="input col s4">
+                        <label for="descricao_reduzida">Descrição reduzida</label>
+                        <input type="text" name="descricao_reduzida" class="validate descricao_reduzida" value="Alterando item"
+                            required>
+                    </section>
+                    <section class="input col s2">
+                        <label for="barra">barras</label>
+                        <input type="text" name="barra" class="barra" value="178912354892" />
+                    </section>
+                    <section class="input col s4">
+                        <label for="observacao">Observação</label>
+                        <input type="text" name="observacao" class="observacao" value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ">
+                    </section>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+            <button type="submit" class="waves-effect waves-light teal darken-3 btn btn-small right">Alterar
+                <i class="material-icons right">edit</i></a>
+        </div>
+        </form>
+    </div>
+    <!-- end modal alterar -->
+
+    <!-- start modal excluir -->
+    <div id="item-modal-excluir" class="modal fade">
+        <div class="modal-content">
+            <h4>Excluir</h4>
+            <input type="hidden" id="item_del_id" name="item_id" />
+            <p id="item-deletar"></p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+            <button type="submit" class="waves-effect waves-light red darken-4 btn btn-small right" id="item_del">Excluir
+                <i class="material-icons right">delete</i></a>
+        </div>
+    </div>
+    <!-- end modal excluir -->
+
+    <!-- start scripts -->
+    <script type="text/javascript" src="lib/js/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/js/materialize.min.js"></script>
+    <script type="text/javascript" src="lib/js/script.js"></script>
+    <!-- end scripts -->
+    
+    <!-- Javascript necessário para manipulação do elementos -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.modal').modal();
+            $('select').formSelect();
+
+            $('#item-novo').click(function () {
+                M.Modal.getInstance($('#item-modal-adicionar')).open();
+            });
+
+            $('#item-add').submit(function (e) {
+                e.preventDefault();
+                M.toast({ html: 'Adicionado <i class="material-icons right">check_box</i>' });
+            });
+
+            $(document).on('click', '#alterar', function () {
+                M.Modal.getInstance($('#item-modal-alterar')).open();
+            });
+
+            $('#item-alt').submit(function (e) {
+                e.preventDefault();
+                M.Modal.getInstance($('#item-modal-alterar')).close();
+                M.toast({ html: 'Alterado <i class="material-icons right">check_box</i>' });
+            });
+
+            $(document).on('click', '#excluir', function () {
+                M.Modal.getInstance($('#item-modal-excluir')).open();
+                $('#item-deletar').text('Deseja realmente excluir o item?');
+            });
+
+            $('#item_del').click(function (e) {
+                M.toast({ html: 'Excluído <i class="material-icons right">clear</i>' });
+                M.Modal.getInstance($('#item-modal-excluir')).close();
+            });
+
+            $('#item-atualizar').click(function (e) {
+                M.toast({ html: 'Lista atualizada <i class="material-icons right">check</i>' });
+            });
+
+        });
+    </script>
+</body>
+
+</html>
