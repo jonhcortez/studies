@@ -24,5 +24,5 @@ Facilitando a visualização do conteúdo explorado.
 Link: [Live preview]
 
 [Materialize]: materializecss.com/
-[Formulário]: #
-[Live preview]: #
+[Formulário]: https://jonhcortez.github.io/studies/materialize-jquery/
+[Live preview]: https://jonhcortez.github.io/studies/materialize-jquery/itens.html
