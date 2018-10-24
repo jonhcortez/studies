@@ -25,4 +25,4 @@ Link: [Live preview]
 
 [Materialize]: materializecss.com/
 [Formulário]: https://jonhcortez.github.io/studies/materialize-jquery/
-[Live preview]: https://jonhcortez.github.io/studies/materialize-jquery/itens.html
+[Live preview]: https://jonhcortez.github.io/studies/materialize-jquery/item
