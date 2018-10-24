@@ -18,7 +18,7 @@ Está sendo utilizado links para os aquivos de JS e CSS.
 
 Facilitando a visualização do conteúdo explorado.
 
-
+Lembrando que esse desenvolvimento focou na formação de elementos que possam ser utilizado para commit's.
 
 
 Link: [Live preview]
